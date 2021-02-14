@@ -1,3 +1,3 @@
-import UserRegistrationScreenStyles from './UserRegistrationScreen.styles';
+import LogInStyles from './logIn.styles';
 
-export { UserRegistrationScreenStyles };
+export { LogInStyles };

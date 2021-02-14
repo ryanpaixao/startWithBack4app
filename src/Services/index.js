@@ -1,3 +1,4 @@
+import UserLogIn from './UserLogIn';
 import UserRegistration from './UserRegistration';
 
-export { UserRegistration };
+export { UserLogIn, UserRegistration };

@@ -8,9 +8,9 @@ import {
   View,
 } from 'react-native';
 import Parse from 'parse/react-native';
-import { UserLogInStyles as Styles } from '../Views/Styles';
+import { UserLogInStyles as Styles } from './Styles';
 
-export const UserLogIn = () => {
+const UserLogIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -75,7 +75,7 @@ export const UserLogIn = () => {
               ]}>
               <Image
                 style={Styles.login_social_icon}
-                source={require('./assets/icon-facebook.png')}
+                source={require('../assets/icon-facebook.png')}
               />
             </View>
           </TouchableOpacity>
@@ -83,7 +83,7 @@ export const UserLogIn = () => {
             <View style={Styles.login_social_button}>
               <Image
                 style={Styles.login_social_icon}
-                source={require('./assets/icon-google.png')}
+                source={require('../assets/icon-google.png')}
               />
             </View>
           </TouchableOpacity>
@@ -91,7 +91,7 @@ export const UserLogIn = () => {
             <View style={Styles.login_social_button}>
               <Image
                 style={Styles.login_social_icon}
-                source={require('./assets/icon-apple.png')}
+                source={require('../assets/icon-apple.png')}
               />
             </View>
           </TouchableOpacity>
@@ -100,3 +100,5 @@ export const UserLogIn = () => {
     </View>
   );
 };
+
+export default UserLogIn;

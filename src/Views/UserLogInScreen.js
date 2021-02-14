@@ -1,10 +1,10 @@
 import React from 'react';
 import { Image, SafeAreaView, StatusBar, Text, View } from 'react-native';
 
-import { UserRegistration } from '../Services';
+import { UserLogIn } from '../Services';
 import { LogInStyles as Styles } from './Styles';
 
-const UserRegistrationScreen = () => {
+const UserLogInScreen = () => {
   return (
     <>
       <StatusBar />
@@ -18,13 +18,13 @@ const UserRegistrationScreen = () => {
             <Text style={Styles.login_header_text_bold}>
               {'React Native on Back4App - '}
             </Text>
-            {' User registration'}
+            {' User login'}
           </Text>
         </View>
-        <UserRegistration />
+        <UserLogIn />
       </SafeAreaView>
     </>
   );
 };
 
-export default UserRegistrationScreen;
+export default UserLogInScreen;
