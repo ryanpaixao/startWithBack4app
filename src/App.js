@@ -1,66 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, StatusBar } from 'react-native';
+import 'react-native-gesture-handler';
 
 // In a React Native application
-import Parse from 'parse/react-native.js';
 import AsyncStorage from '@react-native-community/async-storage';
+import Parse from 'parse/react-native.js';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import keys from '../constants/Keys/Keys';
-import UserRegistration from './Services/UserRegistration';
+import { APPLICATION_ID, JAVASCRIPT_ID, HOST_URL } from './constants/Keys';
+import { UserRegistrationScreen } from './Views';
 
-//Before using the SDK...
+// Parse initialization configuration
 Parse.setAsyncStorage(AsyncStorage);
-Parse.initialize(keys.applicationId, keys.javascriptKey);
-Parse.serverURL = keys.serverURL;
+Parse.initialize(APPLICATION_ID, JAVASCRIPT_ID);
+Parse.serverURL = HOST_URL;
 
-// export const App: () => React$Node = () => {
+const Stack = createStackNavigator();
+
 const App = () => {
-  // useEffect(() => {
-  //   createInstallation = async () => {
-  //     const Installation = Parse.Object.extend(Parse.Installation);
-  //     const installation = new Installation();
-
-  //     installation.set('deviceType', Platform.OS);
-  //     await installation.save();
-  //   };
-
-  //   createInstallation();
-  // }, []);
-
   return (
-    <>
-      <StatusBar />
-      <SafeAreaView style={styles.container}>
-        <>
-          <Text style={styles.title}>React Native on Back4App</Text>
-          <Text>User registration tutorial</Text>
-          <UserRegistration />
-        </>
-      </SafeAreaView>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Sign Up" component={UserRegistrationScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-// Remember to add some styles at the end of your file
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
 
 export default App;
