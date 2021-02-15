@@ -8,7 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { APPLICATION_ID, JAVASCRIPT_ID, HOST_URL } from './constants/Keys';
-import { UserLogInScreen, UserRegistrationScreen } from './Views';
+import { HomeScreen, UserLogInScreen, UserRegistrationScreen } from './Views';
 
 // Parse initialization configuration
 Parse.setAsyncStorage(AsyncStorage);
@@ -21,8 +21,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={UserLogInScreen} />
-        <Stack.Screen name="Sign Up" component={UserRegistrationScreen} />
+        <Stack.Screen name="UserLogIn" component={UserLogInScreen} />
+        <Stack.Screen
+          name="UserRegistration"
+          component={UserRegistrationScreen}
+        />
+        <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

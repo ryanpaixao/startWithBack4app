@@ -8,9 +8,12 @@ import {
   View,
 } from 'react-native';
 import Parse from 'parse/react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import Styles from '../Styles';
 
 const UserLogIn = () => {
+  const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,6 +30,8 @@ const UserLogIn = () => {
         // To verify that this is in fact the current user, currentAsync can be used
         const currentUser = await Parse.User.currentAsync();
         console.log(loggedInUser === currentUser);
+        // Navigate user to HomeScreen after successful logIn
+        navigation.navigate('Home');
         return true;
       })
       .catch((error) => {
