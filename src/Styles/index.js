@@ -1,6 +1,29 @@
 import { StyleSheet } from 'react-native';
 
-const UserLogInStyles = StyleSheet.create({
+const Styles = StyleSheet.create({
+  login_container: {
+    flex: 1,
+    backgroundColor: '#FFF',
+  },
+  login_header: {
+    alignItems: 'center',
+    paddingTop: 30,
+    paddingBottom: 50,
+    backgroundColor: '#208AEC',
+  },
+  login_header_logo: {
+    width: 220,
+    resizeMode: 'contain',
+  },
+  login_header_text: {
+    marginTop: 15,
+    color: '#f0f0f0',
+    fontSize: 16,
+  },
+  login_header_text_bold: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
   login_wrapper: {
     flex: 1,
     justifyContent: 'space-between',
@@ -77,6 +100,17 @@ const UserLogInStyles = StyleSheet.create({
     backgroundColor: '#4267B2',
     borderColor: '#4267B2',
   },
+  login_footer_text: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    color: '#808080',
+    fontSize: 15,
+  },
+  login_footer_link: {
+    color: '#208AEC',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
 });
 
-export default UserLogInStyles;
+export default Styles;

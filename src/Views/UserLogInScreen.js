@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, SafeAreaView, StatusBar, Text, View } from 'react-native';
 
 import { UserLogIn } from '../Services';
-import { LogInStyles as Styles } from './Styles';
+import Styles from '../Styles';
 
 const UserLogInScreen = () => {
   return (
@@ -12,7 +12,7 @@ const UserLogInScreen = () => {
         <View style={Styles.login_header}>
           <Image
             style={Styles.login_header_logo}
-            source={require('../assets/logo-back4app.png')}
+            source={require('../Assets/logo-back4app.png')}
           />
           <Text style={Styles.login_header_text}>
             <Text style={Styles.login_header_text_bold}>
