@@ -10,6 +10,9 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import Parse from 'parse/react-native';
 
+import FacebookIcon from '../Assets/icon-facebook.png';
+import GoogleIcon from '../Assets/icon-google.png';
+import AppleIcon from '../Assets/icon-apple.png';
 import Styles from '../Styles';
 
 const UserRegistration = () => {
@@ -75,26 +78,17 @@ const UserRegistration = () => {
                 Styles.login_social_button,
                 Styles.login_social_facebook,
               ]}>
-              <Image
-                style={Styles.login_social_icon}
-                source={require('../Assets/icon-facebook.png')}
-              />
+              <Image style={Styles.login_social_icon} source={FacebookIcon} />
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={Styles.login_social_button}>
-              <Image
-                style={Styles.login_social_icon}
-                source={require('../Assets/icon-google.png')}
-              />
+              <Image style={Styles.login_social_icon} source={GoogleIcon} />
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={Styles.login_social_button}>
-              <Image
-                style={Styles.login_social_icon}
-                source={require('../Assets/icon-apple.png')}
-              />
+              <Image style={Styles.login_social_icon} source={AppleIcon} />
             </View>
           </TouchableOpacity>
         </View>
