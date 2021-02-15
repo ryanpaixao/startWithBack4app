@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, SafeAreaView, StatusBar, Text, View } from 'react-native';
 
-import { UserLogIn } from '../Services';
+import { UserLogIn } from '../Components';
 
 import Back4AppIcon from '../Assets/logo-back4app.png';
 import Styles from '../Styles';
