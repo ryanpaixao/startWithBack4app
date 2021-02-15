@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
-import {
-  Alert,
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Parse from 'parse/react-native';
+
+import { doUserRegistration } from '../Api';
 
 import FacebookIcon from '../Assets/icon-facebook.png';
 import GoogleIcon from '../Assets/icon-google.png';
@@ -19,27 +13,6 @@ const UserRegistration = () => {
   const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  const doUserRegistration = async function () {
-    // Note that this values come from state variables that we've declared before
-    const usernameValue = username;
-    const passwordValue = password;
-    // Since the signUp method returns a Promise, we need to call it using await
-    return await Parse.User.signUp(usernameValue, passwordValue)
-      .then((createdUser) => {
-        // Parse.User.signUp returns the already created ParseUser object if successful
-        Alert.alert(
-          'Success!',
-          `User ${createdUser.getUsername()} was successfully created!`,
-        );
-        return true;
-      })
-      .catch((error) => {
-        // signUp can fail if any parameter is blank or failed an uniqueness check on the server
-        Alert.alert('Error!', error.message);
-        return false;
-      });
-  };
 
   return (
     <View style={Styles.login_wrapper}>
@@ -59,7 +32,8 @@ const UserRegistration = () => {
           secureTextEntry
           onChangeText={(text) => setPassword(text)}
         />
-        <TouchableOpacity onPress={() => doUserRegistration()}>
+        <TouchableOpacity
+          onPress={() => doUserRegistration(username, password)}>
           <View style={Styles.button}>
             <Text style={Styles.button_label}>{'Sign Up'}</Text>
           </View>

@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
-import {
-  Alert,
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import Parse from 'parse/react-native';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
+import { doUserLogIn } from '../Api';
 
 import FacebookIcon from '../Assets/icon-facebook.png';
 import GoogleIcon from '../Assets/icon-google.png';
@@ -20,28 +14,9 @@ const UserLogIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const doUserLogIn = async function () {
-    const usernameValue = username;
-    const passwordValue = password;
-    return await Parse.User.logIn(usernameValue, passwordValue)
-      .then(async (loggedInUser) => {
-        // logIn returns the corresponding ParseUser object
-        Alert.alert(
-          'Success!',
-          `User ${loggedInUser.get('username')} has successfully signed in!`,
-        );
-        // To verify that this is in fact the current user, currentAsync can be used
-        const currentUser = await Parse.User.currentAsync();
-        console.log(loggedInUser === currentUser);
-        // Navigate user to HomeScreen after successful logIn
-        navigation.navigate('Home');
-        return true;
-      })
-      .catch((error) => {
-        // Error can be caused by wrong parameters or lack of Internet connection
-        Alert.alert('Error!', error.message);
-        return false;
-      });
+  const logInCB = () => {
+    // Navigate user to HomeScreen after successful logIn
+    navigation.navigate('Home');
   };
 
   return (
@@ -62,7 +37,8 @@ const UserLogIn = () => {
           secureTextEntry
           onChangeText={(text) => setPassword(text)}
         />
-        <TouchableOpacity onPress={doUserLogIn}>
+        <TouchableOpacity
+          onPress={() => doUserLogIn(username, password, logInCB)}>
           <View style={Styles.button}>
             <Text style={Styles.button_label}>{'Sign in'}</Text>
           </View>
