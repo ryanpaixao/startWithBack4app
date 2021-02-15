@@ -102,6 +102,14 @@ const UserLogIn = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <>
+        <TouchableOpacity onPress={() => navigation.navigate('Sign Up')}>
+          <Text style={Styles.login_footer_text}>
+            {"Don't have an account? "}
+            <Text style={Styles.login_footer_link}>{'Sign up'}</Text>
+          </Text>
+        </TouchableOpacity>
+      </>
     </View>
   );
 };

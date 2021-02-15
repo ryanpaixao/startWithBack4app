@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, SafeAreaView, StatusBar, Text, View } from 'react-native';
 
 import { HelloUser } from '../Components';
+import { UserLogOut } from '../Services';
 import Styles from '../Styles';
 
 const HomeScreen = () => {
@@ -22,6 +23,7 @@ const HomeScreen = () => {
           </Text>
         </View>
         <HelloUser />
+        <UserLogOut />
       </SafeAreaView>
     </>
   );

@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
-import { Alert, Button, StyleSheet, TextInput } from 'react-native';
+import {
+  Alert,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Parse from 'parse/react-native';
 
+import Styles from '../Styles';
+
 const UserRegistration = () => {
+  const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,32 +39,76 @@ const UserRegistration = () => {
   };
 
   return (
-    <>
-      <TextInput
-        style={styles.input}
-        value={username}
-        placeholder={'Username'}
-        onChangeText={(text) => setUsername(text)}
-        autoCapitalize={'none'}
-      />
-      <TextInput
-        style={styles.input}
-        value={password}
-        placeholder={'Password'}
-        secureTextEntry
-        onChangeText={(text) => setPassword(text)}
-      />
-      <Button title={'Sign Up'} onPress={() => doUserRegistration()} />
-    </>
+    <View style={Styles.login_wrapper}>
+      <View style={Styles.form}>
+        <TextInput
+          style={Styles.form_input}
+          value={username}
+          placeholder={'Username'}
+          onChangeText={(text) => setUsername(text)}
+          autoCapitalize={'none'}
+          keyboardType={'email-address'}
+        />
+        <TextInput
+          style={Styles.form_input}
+          value={password}
+          placeholder={'Password'}
+          secureTextEntry
+          onChangeText={(text) => setPassword(text)}
+        />
+        <TouchableOpacity onPress={() => doUserRegistration()}>
+          <View style={Styles.button}>
+            <Text style={Styles.button_label}>{'Sign Up'}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <View style={Styles.login_social}>
+        <View style={Styles.login_social_separator}>
+          <View style={Styles.login_social_separator_line} />
+          <Text style={Styles.login_social_separator_text}>{'or'}</Text>
+          <View style={Styles.login_social_separator_line} />
+        </View>
+        <View style={Styles.login_social_buttons}>
+          <TouchableOpacity>
+            <View
+              style={[
+                Styles.login_social_button,
+                Styles.login_social_facebook,
+              ]}>
+              <Image
+                style={Styles.login_social_icon}
+                source={require('../Assets/icon-facebook.png')}
+              />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={Styles.login_social_button}>
+              <Image
+                style={Styles.login_social_icon}
+                source={require('../Assets/icon-google.png')}
+              />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={Styles.login_social_button}>
+              <Image
+                style={Styles.login_social_icon}
+                source={require('../Assets/icon-apple.png')}
+              />
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <>
+        <TouchableOpacity onPress={() => navigation.navigate('Log In')}>
+          <Text style={Styles.login_footer_text}>
+            {'Already have an account? '}
+            <Text style={Styles.login_footer_link}>{'Log In'}</Text>
+          </Text>
+        </TouchableOpacity>
+      </>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    marginBottom: 10,
-    backgroundColor: '#fff',
-  },
-});
 
 export default UserRegistration;
