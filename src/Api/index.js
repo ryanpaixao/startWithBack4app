@@ -68,7 +68,7 @@ const doUserRegistration = async function (username, password) {
 
 /****************** Person Class ****************/
 /** Save New Person */
-const saveNewPerson = async function () {
+const saveNewPerson = async function (name, age) {
   // Creating new subclasses using Parse.Object.
   const Person = Parse.Object.extend('Person');
 
@@ -76,8 +76,8 @@ const saveNewPerson = async function () {
   const person = new Person();
 
   // set attributes of instance
-  person.set('name', 'Jon Snow');
-  person.set('age', 27);
+  person.set('name', name);
+  person.set('age', age);
   try {
     let result = await person.save();
     Alert.alert(`New object created with objectId: ${result.id}`);
