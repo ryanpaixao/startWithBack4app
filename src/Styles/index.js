@@ -41,7 +41,8 @@ const Styles = StyleSheet.create({
   form_input: {
     height: 44,
     paddingHorizontal: 20,
-    marginBottom: 20,
+    marginTop: 20,
+    marginBottom: 10,
     backgroundColor: '#EDF0F7',
     borderRadius: 50,
   },
@@ -51,6 +52,8 @@ const Styles = StyleSheet.create({
     height: 44,
     backgroundColor: '#0065A4',
     borderRadius: 50,
+    marginTop: 20,
+    marginBottom: 20,
   },
   button_label: {
     color: '#fff',
@@ -110,6 +113,12 @@ const Styles = StyleSheet.create({
     color: '#208AEC',
     fontSize: 15,
     fontWeight: 'bold',
+  },
+  horizontal_line: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

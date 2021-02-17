@@ -1,5 +1,12 @@
 import React from 'react';
-import { Image, SafeAreaView, StatusBar, Text, View } from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Text,
+  View,
+} from 'react-native';
 
 import { HelloUser, UserInfoEntry, UserLogOut } from '../Components';
 
@@ -11,18 +18,20 @@ const HomeScreen = () => {
     <>
       <StatusBar />
       <SafeAreaView style={Styles.login_container}>
-        <View style={Styles.login_header}>
-          <Image style={Styles.login_header_logo} source={Back4AppIcon} />
-          <Text style={Styles.login_header_text}>
-            <Text style={Styles.login_header_text_bold}>
-              {'React Native on Back4App - '}
+        <ScrollView>
+          <View style={Styles.login_header}>
+            <Image style={Styles.login_header_logo} source={Back4AppIcon} />
+            <Text style={Styles.login_header_text}>
+              <Text style={Styles.login_header_text_bold}>
+                {'React Native on Back4App - '}
+              </Text>
+              {' Home'}
             </Text>
-            {' Home'}
-          </Text>
-        </View>
-        <HelloUser />
-        <UserInfoEntry />
-        <UserLogOut />
+          </View>
+          <HelloUser />
+          <UserInfoEntry />
+          <UserLogOut />
+        </ScrollView>
       </SafeAreaView>
     </>
   );

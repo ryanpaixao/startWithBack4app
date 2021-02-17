@@ -87,6 +87,29 @@ const saveNewPerson = async function (name, age) {
     );
   }
 };
+/** Retrieve Person */
+const retrievePerson = async function (objectId) {
+  const Person = Parse.Object.extend('Person');
+  const query = new Parse.Query(Person);
+
+  try {
+    const person = await query.get(objectId);
+    const name = person.get('name');
+    const age = person.get('age');
+
+    Alert.alert(`Name: ${name} Age: ${age}`);
+  } catch (error) {
+    Alert.alert(
+      `Failed to retrieve the object, with error code: ${error.message}`,
+    );
+  }
+};
 /********************^^^^^^^^^**********************/
 
-export { doUserLogIn, doUserLogOut, doUserRegistration, saveNewPerson };
+export {
+  doUserLogIn,
+  doUserLogOut,
+  doUserRegistration,
+  retrievePerson,
+  saveNewPerson,
+};
